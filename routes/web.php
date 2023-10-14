@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Pharmacy\DashboardController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +17,31 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('dashboard');
 });
 
-Auth::routes();
+Auth::routes(
+    [
+        'register' => false,
+        'confirm' => false,
+        'reset' => false, // Password Reset Routes...
+        'verify' => false, // Email Verification Routes...
+    ]
+);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('dev-logout', function(){
+  Auth::logout();
+  return redirect('admin/login');
+})->name('route-logout');
+
+//Users
+Route::get('users', [UserController::class,'index'])->name('users.list');
+
+//Dashboard
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+//Pharmacy Store
+Route::group(['prefix' => 'pharmacy', 'middleware' => 'auth', 'as' => 'pharmacy.'], function () {
+    //Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+});
+

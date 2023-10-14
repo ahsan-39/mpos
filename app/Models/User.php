@@ -19,7 +19,10 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
+        'role_id',
+        'is_active',
         'password',
     ];
 
@@ -42,4 +45,32 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function scopeNonAdmin()
+    {
+        return $this->where('role_id','!=',1);
+    }
+
+    public function scopeActive()
+    {
+        return $this->where('is_active',true);
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function isActive(): bool
+    {
+        return $this->is_active;
+    }
+
+    public function markActive($active=true): User
+    {
+        $this->update([
+            'is_active' => $active
+        ]);
+        return $this;
+    }
 }
