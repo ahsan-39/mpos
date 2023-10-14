@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', async function () {
     initDateRangePicker();
-    window.Livewire.on('reset-daterangepicker', function () {
+    Livewire.on('reset-daterangepicker', function () {
         initDateRangePicker();
     });
-    window.Livewire.on('hideModal', function () {
+    Livewire.on('hideModal', function () {
         $("[data-dismiss=modal]").trigger({
             type: "click"
         });
@@ -30,10 +30,10 @@ document.addEventListener('DOMContentLoaded', async function () {
     $(function () {
         $('.bt-select-picker').selectpicker();
     });
-    window.livewire.on('initSelectFilter', () => {
+    Livewire.on('initSelectFilter', () => {
         $('.bt-select-picker').selectpicker();
     });
-    window.livewire.on('clear-select-filters', () => {
+    Livewire.on('clear-select-filters', () => {
         $(".bt-select-picker").val("").selectpicker("refresh");
     });
 });

@@ -56,9 +56,6 @@
             </a>
           </li>
         </ul>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-          @csrf
-        </form>
       </nav>
       <!-- /.sidebar-menu -->
 

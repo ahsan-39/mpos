@@ -66,39 +66,39 @@ final class IndexTableComponent extends Component
 
     public function save()
     {
+        $validatedData = $this->validate(
+            [
+                'name' => 'required|min:3|max:30',
+                //'email' => 'required|email|min:3|max:100|unique:users,email,null,id',
+                'username' => 'required|min:3|max:100|unique:users,username,null,id',
+                'password' => 'required|confirmed|min:6',
+                'phone' => 'required',
+                'role_id' => 'required',
+            ],
+            [
+                'password.required' => 'The password and confirm password fields are required.',
+                'role_id.required' => 'The role field is required.',
+            ]
+        );
         try {
-            $validatedData = $this->validate(
-                [
-                    'name' => 'required|min:3|max:30',
-                    //'email' => 'required|email|min:3|max:100|unique:users,email,null,id',
-                    'username' => 'required|min:3|max:100|unique:users,username,null,id',
-                    'password' => 'required|confirmed|min:6',
-                    'phone' => 'required',
-                    'role_id' => 'required',
-                ],
-                [
-                    'password.required' => 'The password and confirm password fields are required.',
-                    'role_id.required' => 'The role field is required.',
-                ]
-            );
             unset($validatedData['role']);
 
-            //$validatedData['email'] = ($this->email && $this->email != "")?$this->email:"";
+            $validatedData['email'] = ($this->email && $this->email != "")?$this->email:"";
             $validatedData['username'] = ($this->username && $this->username != "")?$this->username:"";
             $validatedData['password'] = Hash::make($this->password);
             $validatedData['is_active'] = true;
-            $user = User::create($validatedData);
+            User::create($validatedData);
 
-            $this->emit('alert-success','User created successfully.');
+            $this->dispatch('alert-success','User created successfully.');
 
             $this->resetInputFields();
-            $this->emit('hideModal');
+            $this->dispatch('hideModal');
 
         } catch (\Exception $e){
             if(config('app.debug')){
-                $this->emit('alert-danger', $e->getMessage());
+                $this->dispatch('alert-danger', $e->getMessage());
             }else{
-                $this->emit('alert-danger', 'Something went wrong.');
+                $this->dispatch('alert-danger', 'Something went wrong.');
             }
         }
     }
@@ -139,9 +139,9 @@ final class IndexTableComponent extends Component
 
         } catch (\Exception $e){
             if(config('app.debug')){
-                $this->emit('alert-danger', $e->getMessage());
+                $this->dispatch('alert-danger', $e->getMessage());
             }else{
-                $this->emit('alert-danger', 'Something went wrong.');
+                $this->dispatch('alert-danger', 'Something went wrong.');
             }
         }
     }
@@ -153,7 +153,7 @@ final class IndexTableComponent extends Component
 
     public function edit($id)
     {
-        $this->currentPage = $this->page;
+        $this->currentPage = $this->getPage();
         $this->lightBoxTitle = 'Edit User';
         $this->resetValidation();
         $this->updateMode = true;
@@ -177,7 +177,7 @@ final class IndexTableComponent extends Component
         $validatedData = $this->validate([
             'name' => 'required|min:3|max:30',
             //'email' => 'required|email|min:3|max:100',
-            'username' => 'required|username|min:3|max:100',
+            'username' => 'required|min:3|max:100',
             'password' => 'nullable|confirmed|min:6',
             'phone' => 'required',
             'role_id' => 'required'
@@ -195,9 +195,9 @@ final class IndexTableComponent extends Component
 
             $user->update($validatedData);
             $this->updateMode = false;
-            $this->emit('alert-success','User Updated Successfully');
+            $this->dispatch('alert-success','User Updated Successfully');
             $this->resetInputFields();
-            $this->emit('hideModal');
+            $this->dispatch('hideModal');
             $this->setPage($this->currentPage);
         }
     }
@@ -206,7 +206,7 @@ final class IndexTableComponent extends Component
     {
         try {
             User::find($user)->delete();
-            $this->emit('alert-success','User Deleted Successfully');
+            $this->dispatch('alert-success','User Deleted Successfully');
         } catch (\Exception $exception){
             session()->flash('alert-danger',$exception->getMessage());
         }

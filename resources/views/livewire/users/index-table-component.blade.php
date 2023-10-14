@@ -63,7 +63,7 @@
                             <thead class="tbl-head-color">
                                 <tr>
                                     <th>Name</th>
-                                    <th>Email</th>
+                                    <th>Username</th>
                                     <th>Phone</th>
                                     <th>Role</th>
                                     <th style="width: 15%;">Created Date</th>
@@ -75,7 +75,7 @@
                                 @forelse($users as $user)
                                 <tr>
                                     <td>{{$user->name}}</td>
-                                    <td>{{$user->email}}</td>
+                                    <td>{{$user->username}}</td>
                                     <td>{{$user->phone}}</td>
                                     <td>{{$user->role_id?$user->role->name:'N/A'}}</td>
                                     <td>{{date('d/m/Y H:i:s', strtotime($user->created_at))}}</td>
@@ -85,7 +85,7 @@
                                     @if($user->id != 1)
                                     <td>
                                         <button data-toggle="modal" data-target="#userFormModal" wire:click="edit({{ $user->id }})" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></button>
-                                        <a href="javascript:void(0)" wire:click="$emit('confirmDelete','{{$user->id}}')" class="btn btn-danger btn-xs"><span><i class="fa fa-trash"></i></span></a>
+                                        <a href="javascript:void(0)" wire:click="$dispatch('confirmDelete','{{$user->id}}')" class="btn btn-danger btn-xs"><span><i class="fa fa-trash"></i></span></a>
                                     </td>
                                     @endif
                                 </tr>
