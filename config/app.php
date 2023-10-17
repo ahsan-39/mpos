@@ -18,6 +18,10 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'title' => env('APP_TITLE', 'Medicine Point of Sale'),
+
+    'vendor' => env('APP_VENDOR', 'DR. ANSER YOUSAF JOYIA CLINIC'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

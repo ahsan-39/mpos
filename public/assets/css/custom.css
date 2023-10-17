@@ -1,0 +1,53 @@
+.daterangepicker td.active,
+.daterangepicker td.active:hover {
+    background-color: #138496 !important;
+}
+
+.bootstrap-select>.dropdown-toggle {
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    background: #fff;
+    line-height: 1.5;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #495057 !important;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    background-clip: padding-box;
+    border-radius: .25rem;
+    box-shadow: inset 0 0 0 transparent;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.bootstrap-select .dropdown-menu>li>a {
+    color: #353535;
+    padding: 4px 9px;
+    font-size: 12px;
+}
+
+.invalid-tooltip {
+    top: 20px;
+    font-size: 12px;
+}
+
+.bootstrap-select .dropdown-item.active,
+.dropdown-item:active {
+    background-color: #138496;
+}
+
+.bootstrap-select .dropdown-menu li.active a span.text {
+    background-color: #138496;
+    color: #ffffff;
+}
+
+.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+    width: 140px !important;
+}
+
+.bootstrap-select.bs-container{
+    border: none;
+}
+
+.bootstrap-select .dropdown-menu {
+    max-height: 250px !important;
+}

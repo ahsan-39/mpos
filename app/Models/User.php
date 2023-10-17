@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Contracts\ActiveStatus;
 
-class User extends Authenticatable
+class User extends Authenticatable implements ActiveStatus
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -19,7 +20,11 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
+        'phone',
         'email',
+        'role_id',
+        'is_active',
         'password',
     ];
 
@@ -42,4 +47,32 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function scopeNonAdmin()
+    {
+        return $this->where('role_id','!=',1);
+    }
+
+    public function scopeActive()
+    {
+        return $this->where('is_active',true);
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function isActive(): bool
+    {
+        return $this->is_active;
+    }
+
+    public function markActive($active=true): User
+    {
+        $this->update([
+            'is_active' => $active
+        ]);
+        return $this;
+    }
 }
