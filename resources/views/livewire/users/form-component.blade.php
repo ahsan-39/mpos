@@ -79,11 +79,11 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" wire:click.prevent="cancel()" wire:loading.attr="disabled" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-sm btn-secondary" wire:click.prevent="cancel()" wire:loading.attr="disabled" data-dismiss="modal">Close</button>
                 @if($updateMode)
-                <button type="button" class="btn btn-primary" wire:click.prevent="update()">Update</button>
+                <button type="button" class="btn btn-sm btn-primary" wire:click.prevent="update()">Update</button>
                 @else
-                <button type="button" class="btn btn-primary" wire:click.prevent="save" wire:loading.attr="disabled">Save</button>
+                <button type="button" class="btn btn-sm btn-primary" wire:click.prevent="save" wire:loading.attr="disabled">Save</button>
                 <div wire:loading wire:target="save">
                     <button class="btn btn-primary" type="button" disabled>
                         <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>

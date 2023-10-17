@@ -85,7 +85,7 @@
                                     @if($user->id != 1)
                                     <td>
                                         <button data-toggle="modal" data-target="#userFormModal" wire:click="edit({{ $user->id }})" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></button>
-                                        <a href="javascript:void(0)" wire:click="$dispatch('confirmDelete','{{$user->id}}')" class="btn btn-danger btn-xs"><span><i class="fa fa-trash"></i></span></a>
+                                        <a href="javascript:void(0)" wire:click="delete('{{$user->id}}')"  wire:confirm="Are you sure to delete this record ?" class="btn btn-danger btn-xs"><span><i class="fa fa-trash"></i></span></a>
                                     </td>
                                     @endif
                                 </tr>
