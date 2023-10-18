@@ -85,7 +85,7 @@
                 @else
                 <button type="button" class="btn btn-sm btn-primary" wire:click.prevent="save" wire:loading.attr="disabled">Save</button>
                 <div wire:loading wire:target="save">
-                    <button class="btn btn-primary" type="button" disabled>
+                    <button class="btn btn-sm btn-primary" type="button" disabled>
                         <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
                         Processing...
                     </button>
