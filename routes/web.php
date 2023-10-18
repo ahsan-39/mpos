@@ -31,7 +31,7 @@ Auth::routes(
 
 Route::get('dev-logout', function(){
   Auth::logout();
-  return redirect('admin/login');
+  return redirect('/login');
 })->name('route-logout');
 
 //Users
