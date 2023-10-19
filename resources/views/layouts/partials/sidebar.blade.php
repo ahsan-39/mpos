@@ -24,17 +24,17 @@
           @if(auth()->user()->role_id == 1)
           <li class="nav-item">
             <a href="{{route('users.list')}}" class="nav-link {{request()->segment(1)=='users'?'active':''}}">
-              <i class="nav-icon fa fa-users"></i>
+              <i class="nav-icon fa fa-user-alt"></i>
                 <p>
                   Users
                 </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link {{request()->segment(1)=='clients'?'active':''}}">
-              <i class="nav-icon fa fa-user-alt"></i>
+            <a href="{{route('suppliers.list')}}" class="nav-link {{request()->segment(1)=='suppliers'?'active':''}}">
+              <i class="nav-icon fa fa-users"></i>
               <p>
-                Clients
+                Suppliers
               </p>
             </a>
           </li>
