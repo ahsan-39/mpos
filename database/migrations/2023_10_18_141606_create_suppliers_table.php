@@ -28,8 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('suppliers', function (Blueprint $table) {
-            $table->dropColumn(['code','name','phone','email','address','is_active']);
-        }); 
+        Schema::dropIfExists('suppliers');
     }
 };

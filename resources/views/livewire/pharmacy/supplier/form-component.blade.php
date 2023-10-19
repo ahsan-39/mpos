@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div wire:ignore.self class="modal fade" id="userFormModal" tabindex="-1" role="dialog" aria-labelledby="userFormModalTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+<div wire:ignore.self class="modal fade" id="supplierFormModal" tabindex="-1" role="dialog" aria-labelledby="supplierFormModalTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-dialog-centered custom-modal-width" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -13,10 +13,10 @@
                     {{ implode('', $errors->all('<p>:message</p>')) }}
                     @endif --}}
                 <div class="row">
-                <div class="col-md-6 col-sm-6 mb-3">
-                <label>Code <span class="req">*</span></label>
+                    <div class="col-md-6 col-sm-6 mb-3">
+                        <label>Code <span class="req">*</span></label>
                         <div>
-                            <input type="text" maxlength="100" class="form-control @error('code') is-invalid @enderror" wire:model.defer="username" placeholder="0000000" />
+                            <input type="text" maxlength="100" class="form-control @error('code') is-invalid @enderror" wire:model.defer="code" placeholder="00000" />
                             @error('code')
                             <em id="name-error" class="error invalid-feedback">{{ $message }}</em>
                             @enderror
@@ -25,25 +25,25 @@
                     <div class="col-md-6 col-sm-6 mb-3">
                         <label>Name <span class="req">*</span></label>
                         <div>
-                            <input type="text" maxlength="100" class="form-control @error('name') is-invalid @enderror" wire:model.defer="username" placeholder="Name" />
+                            <input type="text" maxlength="100" class="form-control @error('name') is-invalid @enderror" wire:model.defer="name" placeholder="Name" />
                             @error('name')
                             <em id="name-error" class="error invalid-feedback">{{ $message }}</em>
                             @enderror
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 mb-3">
-                    <label>Phone <span class="req">*</span></label>
+                        <label>Phone <span class="req">*</span></label>
                         <div>
-                            <input type="text" maxlength="100" class="form-control ignoreSpecial @error('phone') is-invalid @enderror" wire:model.defer="name" placeholder="000000000" />
+                            <input type="text" maxlength="100" class="form-control ignoreSpecial @error('phone') is-invalid @enderror" wire:model.defer="phone" placeholder="000000000" />
                             @error('phone')
                             <em id="name-error" class="error invalid-feedback">{{ $message }}</em>
                             @enderror
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 mb-3">
-                        <label>Email <span class="req">*</span></label>
+                        <label>Email</label>
                         <div>
-                            <input type="text" maxlength="100" class="form-control @error('email') is-invalid @enderror" wire:model.defer="username" placeholder="Email" />
+                            <input type="text" maxlength="100" class="form-control @error('email') is-invalid @enderror" wire:model.defer="email" placeholder="Email" />
                             @error('email')
                             <em id="name-error" class="error invalid-feedback">{{ $message }}</em>
                             @enderror
@@ -51,16 +51,16 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-6 mb-3">
-                        <label>Address <span class="req">*</span></label>
-                        <div>
-                            <input type="text" maxlength="100" class="form-control @error('address') is-invalid @enderror" wire:model.defer="username" placeholder="Address" />
-                            @error('address')
-                            <em id="name-error" class="error invalid-feedback">{{ $message }}</em>
-                            @enderror
-                        </div>
+                    <label>Address</label>
+                    <div>
+                        <textarea class="form-control @error('address') is-invalid @enderror" wire:model.defer="address"></textarea>
+                        @error('address')
+                        <em id="name-error" class="error invalid-feedback">{{ $message }}</em>
+                        @enderror
                     </div>
+                </div>
             </div>
-                <div class="modal-footer">
+            <div class="modal-footer">
                 <button type="button" class="btn btn-sm btn-secondary" wire:click.prevent="cancel()" wire:loading.attr="disabled" data-dismiss="modal">Close</button>
                 @if($updateMode)
                 <button type="button" class="btn btn-sm btn-primary" wire:click.prevent="update()">Update</button>
