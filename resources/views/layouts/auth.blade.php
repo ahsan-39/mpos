@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" href="{{asset('assets/img/logoT.png')}}" type="image/png">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MPOSE | Log in</title>
@@ -16,8 +17,9 @@
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
+<img src="{{asset('assets/img/logoT.png')}}" alt="PHarmacy Logo"  style="width: 150px; height: 150px;   margin-left: 100px;" >
   <div class="login-logo">
-    <a href=""><b>M</b>POSE</a>
+    <a href="{{asset('assets/img/logoT.png')}}"><b>M</b>POSE</a>
   </div>
    
         @include('layouts.partials.css')
