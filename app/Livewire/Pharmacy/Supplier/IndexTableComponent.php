@@ -58,6 +58,10 @@ class IndexTableComponent extends Component
         $this->resetValidation();
     }
 
+    public function searchFilter(){
+        $this->search = true;
+    }
+
     public function clearSearch(){
         $this->search = false;
         $this->searchName = $this->searchCode = null;
@@ -87,11 +91,6 @@ class IndexTableComponent extends Component
                 $this->dispatch('alert-danger', 'Something went wrong.');
             }
         }
-    }
-
-    public function clear()
-    {
-        $this->search = null;
     }
 
     public function edit($id)
@@ -124,11 +123,58 @@ class IndexTableComponent extends Component
                 'phone' => 'required',
                 'email' => 'nullable|email|min:3|max:100',
                 'address' => 'nullable',
+            ],
+            [
+                'password.required' => 'The password and confirm password fields are required.'
             ]
         );
-            
+        try {
+            $validatedData['is_active'] = true;
+            Supplier::create($validatedData);
+
             $this->dispatch('alert-success','Supplier created successfully.');
 
+            $this->resetInputFields();
+            $this->dispatch('hideModal');
+
+        } catch (\Exception $e){
+            if(config('app.debug')){
+                $this->dispatch('alert-danger', $e->getMessage());
+            }else{
+                $this->dispatch('alert-danger', 'Something went wrong.');
+            }
+        }
+    }
+
+    public function update()
+    {
+        $validatedData = $this->validate([
+            'name' => 'required|min:3|max:30',
+            'email' => 'nullable|email',
+            'code' => 'required|min:3|max:100',
+            'phone' => 'required',
+            'address' => 'nullable'
+        ],[]);
+
+        if ($this->supplier_id) {
+            $supplie = Supplier::find($this->supplier_id);
+            $supplie->update($validatedData);
+            $this->updateMode = false;
+            $this->dispatch('alert-success','Supplier Updated Successfully');
+            $this->resetInputFields();
+            $this->dispatch('hideModal');
+            $this->setPage($this->currentPage);
+        }
+    }
+
+    public function delete($user)
+    {
+        try {
+            Supplier::find($user)->delete();
+            $this->dispatch('alert-success','Supplier Deleted Successfully');
+        } catch (\Exception $exception){
+            session()->flash('alert-danger',$exception->getMessage());
+        }
     }
 
 }
