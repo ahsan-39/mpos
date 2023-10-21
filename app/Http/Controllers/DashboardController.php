@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Pharmacy\Supplier;
 
 class DashboardController extends Controller
 {
@@ -25,6 +26,8 @@ class DashboardController extends Controller
     public function index()
     {
         $title = 'Dashboard';
-        return view('dashboard', compact('title'));
+        $users_count = User::nonAdmin()->count();
+        $suppliers_count = Supplier::count();
+        return view('dashboard', compact('title','users_count','suppliers_count'));
     }
 }

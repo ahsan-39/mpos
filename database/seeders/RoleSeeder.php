@@ -14,7 +14,7 @@ class RoleSeeder extends Seeder
     {
         Role::truncate();
 
-        Role::create(['id' => 1, 'name' => 'Super Admin','slug' => 'super-admin']);
+        Role::create(['id' => 1, 'name' => 'Admin','slug' => 'super-admin']);
         Role::create(['id' => 2, 'name' => 'Inventory Manager', 'slug' => 'inventory-manager']);
         Role::create(['id' => 3, 'name' => 'Dispenser', 'slug' => 'dispenser']);
     }
