@@ -3,6 +3,8 @@
 namespace App\Livewire\Pharmacy\Items;
 
 use App\Models\Pharmacy\ItemSubCategory;
+use App\Models\Pharmacy\ItemCategory;
+use App\Models\Pharmacy\ItemCategoryGroup;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -18,11 +20,14 @@ class SubCategoryComponent extends Component
     public $perPage=10;
     public $search=false;
     public $updateMode = false;
-    public $supplier_id;
+    public $subCategory_id;
     public $rolesList=[];
     public $roles=[];
+    public $categoryGroups=[];
+    public $categories=[];
+    public $subCategories=[];
     public $sub_category_name, $category_id;
-    public $searchSubCategoryName, $searchCategoryId;
+    public $searchSubCategoryName, $searchCategoryId, $searchCategoryGroupId;
 
     /*
      * if query parameters required, add params in $queryString array
@@ -33,6 +38,9 @@ class SubCategoryComponent extends Component
 
     public function mount()
     {
+        $this->categoryGroups = ItemCategoryGroup::get();
+        $this->categories = ItemCategory::get();
+        $this->subCategories = ItemSubCategory::get();
         $this->resetInputFields();
         $this->clearSearch();
     }
@@ -58,9 +66,9 @@ class SubCategoryComponent extends Component
 
     public function clearSearch(){
         $this->search = false;
-        $this->searchSubCategoryName = null;
-        $this->searchCategoryId = null;
+        $this->searchSubCategoryName = $this->searchCategoryId = $this->searchCategoryGroupId = null;
     }
+
     public function getRecords()
     {
         try {
@@ -68,9 +76,11 @@ class SubCategoryComponent extends Component
             ->when($this->searchSubCategoryName, function($q){
                 $q->where('sub_category_name', 'LIKE', "%{$this->searchSubCategoryName}%");
             })
+
             ->when($this->searchCategoryId, function($q){
                 $q->where('category_id',$this->searchCategoryId);
             })
+
             ->orderBy('id','desc')
             ->paginate($this->perPage);
 
@@ -92,8 +102,8 @@ class SubCategoryComponent extends Component
     {
         $validatedData = $this->validate(
             [
-                'sub_category_name' => 'required',
                 'category_id' => 'required',
+                'sub_category_name' => 'required',
             ],
         );
         try {
@@ -111,6 +121,36 @@ class SubCategoryComponent extends Component
             }else{
                 $this->dispatch('alert-danger', 'Something went wrong.');
             }
+        }
+    }
+
+    public function edit($id)
+    {
+        $this->currentPage = $this->getPage();
+        $this->lightBoxTitle = 'Edit Sub Category';
+        $this->resetValidation();
+        $this->updateMode = true;
+        $itemSubCategory = ItemSubCategory::where('id',$id)->first();
+        $this->subCategory_id = $id;
+        $this->sub_category_name = $itemSubCategory->sub_category_name;
+        $this->category_id = $itemSubCategory->category_id;
+    }
+
+    public function update()
+    {
+        $validatedData = $this->validate([
+            'sub_category_name' => 'required|min:3|max:100',
+            'category_id' => 'required',
+        ],[]);
+
+        if ($this->subCategory_id) {
+            $itemSubCategory = ItemSubCategory::find($this->subCategory_id);
+            $itemSubCategory->update($validatedData);
+            $this->updateMode = false;
+            $this->dispatch('alert-success','Sub Category Updated Successfully');
+            $this->resetInputFields();
+            $this->dispatch('hideModal');
+            $this->setPage($this->currentPage);
         }
     }
 

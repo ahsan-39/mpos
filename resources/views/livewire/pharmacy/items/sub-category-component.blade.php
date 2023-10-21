@@ -2,13 +2,26 @@
 <div class="card">
     <div class="card-body">
         <div class="row">
-            <div class="col-md-3">
-                <label>Sub Category Name</label>
-                <input type="text" placeholder="Sub-Category-Name" class="form-control" wire:model.defer="searchSubCategoryName">
+        <div class="col-md-3">
+                <label>Category Group</label>
+                <select class="form-control" wire:model.defer="searchCategoryGroupId">
+                    <option value="">All</option>
+                    @foreach($categoryGroups as $group)
+                        <option value="{{$group->id}}">{{$group->category_group_name}}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="col-md-3">
                 <label>Category</label>
-                <input type="text" placeholder="000" class="form-control" wire:model.defer="searchCategoryId">
+                <select class="form-control" wire:model.defer="searchCategoryId">
+                    <option value="">All</option>
+                    @foreach($categories as $category)
+                        <option value="{{$category->id}}">{{$category->category_name}}</option>
+                    @endforeach
+                </select>            </div>
+            <div class="col-md-3">
+                <label>Sub Category Name</label>
+                <input type="text" placeholder="Category Name" class="form-control" wire:model.defer="searchSubCategoryName">
             </div>
             <div class="col-md-3 text-md-end">
                 <label class="d-sm-block invisible d-none">Invisible Text</label>
@@ -45,22 +58,27 @@
                     <table class="table table-bordered dataTable dtr-inline">
                         <thead class="tbl-head-color">
                             <tr>
+                                <th>Sr#</th>
+                                <th>Category Group</th>
+                                <th>Category Name</th>
                                 <th>Sub Category Name</th>
-                                <th>Category Id</th>
-                                <th style="width: 15%;">Created Date</th>
                                 <th>Status</th>
+                                <th style="width: 15%;">Created Date</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse($rows as $row)
                             <tr>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$row->category->categoryGroup->category_group_name}}</td>
+                                <td>{{$row->category->category_name}}</td>
                                 <td>{{$row->sub_category_name}}</td>
-                                <td>{{$row->category_id}}</td>
-                                <td>{{date('d/m/Y H:i:s', strtotime($row->created_at))}}</td>
+
                                 <td>
                                     <livewire:active-status-component :model="$row" :key="$loop->iteration.time().'status'" />
                                 </td>
+                                <td>{{date('d/m/Y H:i:s', strtotime($row->created_at))}}</td>
                                 <td>
                                     <button data-toggle="modal" data-target="#supplierFormModal" wire:click="edit({{ $row->id }})" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></button>
                                     <a href="javascript:void(0)" wire:click="delete('{{$row->id}}')"  wire:confirm="Are you sure to delete this record ?" class="btn btn-danger btn-xs"><span><i class="fa fa-trash"></i></span></a>
@@ -101,20 +119,23 @@
             </div>
             <div class="modal-body">
                 <div class="row">
+                <div class="col-md-6 col-sm-6 mb-3">
+                    <label>Category <span class="req">*</span></label>
+                    <select class="form-control @error('category_id') is-invalid @enderror"  wire:model.defer="category_id">
+                        <option value="">Select Category</option>
+                        @foreach($categories as $category)
+                            <option value="{{$category->id}}">{{$category->category_name}}</option>
+                        @endforeach
+                    </select>
+                    @error('category_id')
+                        <em id="name-error" class="error invalid-feedback">{{ $message }}</em>
+                        @enderror
+                    </div>
                     <div class="col-md-6 col-sm-6 mb-3">
                         <label>Sub Category Name <span class="req">*</span></label>
                         <div>
                             <input type="text" maxlength="100" class="form-control @error('sub_category_name') is-invalid @enderror" wire:model.defer="sub_category_name" placeholder="Sub-Category-Name" />
                             @error('sub_category_name')
-                            <em id="name-error" class="error invalid-feedback">{{ $message }}</em>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 mb-3">
-                        <label>Category ID <span class="req">*</span></label>
-                        <div>
-                            <input type="text" maxlength="100" class="form-control @error('category_id') is-invalid @enderror" wire:model.defer="category_id" placeholder="000" />
-                            @error('category_id')
                             <em id="name-error" class="error invalid-feedback">{{ $message }}</em>
                             @enderror
                         </div>
