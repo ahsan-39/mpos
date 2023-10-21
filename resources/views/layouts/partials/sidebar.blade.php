@@ -31,7 +31,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('pharmacy.suppliers.list')}}" class="nav-link {{request()->segment(1)=='suppliers'?'active':''}}">
+            <a href="{{route('pharmacy.suppliers.list')}}" class="nav-link {{request()->segment(2)=='suppliers'?'active':''}}">
               <i class="nav-icon fa fa-users"></i>
               <p>
                 Suppliers
@@ -50,13 +50,13 @@
             <ul class="nav nav-treeview" style="display: block;">
 
               <li class="nav-item">
-                <a href="{{route('pharmacy.category.list')}}" class="nav-link">
+                <a href="{{route('pharmacy.category.list')}}" class="nav-link {{request()->segment(2)=='categories'?'active':''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Item Category</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('pharmacy.sub.category.list')}}" class="nav-link">
+                <a href="{{route('pharmacy.sub.category.list')}}" class="nav-link {{request()->segment(2)=='sub-category'?'active':''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Item Sub Category</p>
                 </a>
