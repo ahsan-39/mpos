@@ -12,13 +12,14 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item">Home</li>
-                        <li class="breadcrumb-item active">Items</li>
+                        <li class="breadcrumb-item">Items</li>
+                        <li class="breadcrumb-item active">Sub Categories</li>
                     </ol>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <!-- Main content -->
     <div class="content">
         <div class="container">
