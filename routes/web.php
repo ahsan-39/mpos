@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Pharmacy\SupplierController;
+use App\Http\Controllers\Pharmacy\Item\SubCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,13 +42,14 @@ Route::get('users', [UserController::class,'index'])->name('users.list');
 //Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-//Suppliers
-Route::get('suppliers', [SupplierController::class,'index'])->name('suppliers.list');
 
 //Pharmacy Store
 Route::group(['prefix' => 'pharmacy', 'middleware' => 'auth', 'as' => 'pharmacy.'], function () {
     
+    //Suppliers
+    Route::get('suppliers', [SupplierController::class,'index'])->name('suppliers.list');
 
-
+    //Items
+    Route::get('sub-category', [SubCategoryController::class,'index'])->name('sub.category.list');
 });
 

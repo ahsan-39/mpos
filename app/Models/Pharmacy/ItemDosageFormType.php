@@ -5,7 +5,7 @@ namespace App\Models\Pharmacy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ItemDosageFormTypes extends Model
+class ItemDosageFormType extends Model
 {
     use HasFactory;
 

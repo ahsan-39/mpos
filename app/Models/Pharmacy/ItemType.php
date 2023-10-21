@@ -5,11 +5,11 @@ namespace App\Models\Pharmacy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ItemDosageRoutes extends Model
+class ItemType extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['dosage_route_name','is_active'];
+    protected $fillable = ['name','is_active'];
 
     public function scopeActive($query)
     {

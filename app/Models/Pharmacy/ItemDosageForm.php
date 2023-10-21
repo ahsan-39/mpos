@@ -5,11 +5,12 @@ namespace App\Models\Pharmacy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ItemTypes extends Model
+class ItemDosageForm extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','is_active'];
+     
+    protected $fillable = ['dosage_form_name','dosage_form_type_id','is_active'];
 
     public function scopeActive($query)
     {
