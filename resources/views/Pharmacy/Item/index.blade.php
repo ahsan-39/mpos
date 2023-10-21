@@ -18,13 +18,13 @@
             </div>
         </div>
     </div>
-
+    
     <!-- Main content -->
     <div class="content">
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <livewire.pharmacy.items.sub-category-component/>
+                    <livewire:pharmacy.items.sub-category-component/>
                 </div>
             </div>
         </div>
