@@ -51,6 +51,7 @@ Route::group(['prefix' => 'pharmacy', 'middleware' => 'auth', 'as' => 'pharmacy.
     //Items
     Route::get('categories', [InventoryController::class,'categories'])->name('category.list');
     Route::get('sub-category', [InventoryController::class,'subCategories'])->name('sub.category.list');
+    Route::get('generic', [InventoryController::class,'generic'])->name('generic.list');
     
 });
 

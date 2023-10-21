@@ -61,6 +61,12 @@
                   <p>Item Sub Category</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('pharmacy.generic.list')}}" class="nav-link {{request()->segment(2)=='generic'?'active':''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Item Generic</p>
+                </a>
+              </li>
             </ul>
           </li>
           <li class="nav-item">
