@@ -5,9 +5,6 @@ namespace App\Livewire\Pharmacy\Supplier;
 use App\Models\Pharmacy\Supplier;
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\User;
-use App\Models\Role;
-use Illuminate\Support\Facades\Auth;
 
 class IndexTableComponent extends Component
 
@@ -38,8 +35,6 @@ class IndexTableComponent extends Component
     {
         $this->resetInputFields();
         $this->clearSearch();
-        $this->rolesList = Role::active()->where('slug','!=','super-admin')->orderBy('id')->get();
-        $this->auth_role_id = Auth::user()->role_id;
     }
 
     public function render()

@@ -31,7 +31,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('suppliers.list')}}" class="nav-link {{request()->segment(1)=='suppliers'?'active':''}}">
+            <a href="{{route('pharmacy.suppliers.list')}}" class="nav-link {{request()->segment(1)=='suppliers'?'active':''}}">
               <i class="nav-icon fa fa-users"></i>
               <p>
                 Suppliers
@@ -39,13 +39,29 @@
             </a>
           </li>
           @endif
-          <li class="nav-item">
-            <a href="#" class="nav-link {{request()->segment(1)=='invoices'?'active':''}}">
-              <i class="nav-icon fa fa-file-alt"></i>
+          <li class="nav-item menu-is-opening menu-open">
+            <a href="javascript:void(0)" class="nav-link">
+              <i class="nav-icon far fa-plus-square"></i>
               <p>
-                Invoices
+                Inventory
+                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview" style="display: block;">
+
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Item Category</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('pharmacy.sub.category.list')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Item Sub Category</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
             <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
