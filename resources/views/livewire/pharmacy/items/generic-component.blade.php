@@ -84,12 +84,18 @@
                             @forelse($rows as $row)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
-                                <td>{{$row->categoryGroup->category_group_name}}</td>
-                                <td>{{$row->category_name}}</td>
+                                <td>{{$row->category->categoryGroup->category_group_name}}</td>
+                                <td>{{$row->category->category_name}}</td>
+                                <td>{{$row->subCategory->sub_category_name}}</td>
+                                <td>{{$row->generic_name}}</td>
                                 <td>
                                     <livewire:active-status-component :model="$row" :key="$loop->iteration.time().'status'" />
                                 </td>
                                 <td>{{date('d/m/Y H:i:s', strtotime($row->created_at))}}</td>
+                                <td>
+                                    <button data-toggle="modal" data-target="#genericFormModal" wire:click="edit({{ $row->id }})" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></button>
+                                    <a href="javascript:void(0)" wire:click="delete('{{$row->id}}')"  wire:confirm="Are you sure to delete this record ?" class="btn btn-danger btn-xs"><span><i class="fa fa-trash"></i></span></a>
+                                </td>
                             </tr>
                             @empty
                             <tr>
@@ -130,7 +136,7 @@
                     <div class="col-md-4 col-sm-4 mb-3">
                         <label>Category <span class="req">*</span></label>
                         <div>
-                            <select class="form-control @error('category_id') is-invalid @enderror" wire:model.defer="category_id" wire:change="changeCateogry(true)">
+                            <select class="form-control @error('category_id') is-invalid @enderror" wire:model="category_id" wire:change="changeCateogry(true)">
                                 <option value="">All</option>
                                 @foreach($categories as $category)
                                     <option value="{{$category->id}}">{{$category->category_name}}</option>
@@ -146,7 +152,7 @@
                         <div>
                             <select class="form-control @error('sub_category_id') is-invalid @enderror" wire:model.defer="sub_category_id">
                                 <option value="">Select Sub Category</option>
-                                @foreach($subCategories as $subCategory)
+                                @foreach($formSubCategories as $subCategory)
                                     <option value="{{$subCategory->id}}">{{$subCategory->sub_category_name}}</option>
                                 @endforeach
                             </select>

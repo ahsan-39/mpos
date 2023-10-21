@@ -79,6 +79,7 @@ class GenericComponent extends Component
     public function changeCateogry($is_form=false)
     {
         $this->subCategories = [];
+        $this->formSubCategories = [];
         if($this->searchCategoryId){
             $this->subCategories = ItemSubCategory::active()->where('category_id',$this->searchCategoryId)->get();
         }
@@ -125,6 +126,7 @@ class GenericComponent extends Component
         $this->generic_id = $id;
         $this->generic_name = $record->generic_name;
         $this->category_id = $record->category_id;
+        $this->changeCateogry(true);
         $this->sub_category_id = $record->sub_category_id;
     }
 
@@ -152,7 +154,6 @@ class GenericComponent extends Component
     {
         $validatedData = $this->validate($this->customValidationRules(),$this->customValidationMessages());
         try {
-            $validatedData['is_active'] = true;
             ItemGeneric::create($validatedData);
 
             $this->dispatch('alert-success','Supplier created successfully.');
