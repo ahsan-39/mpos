@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Pharmacy\Item;
+namespace App\Http\Controllers\Pharmacy;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class InventoryController extends Controller
 {
  /**
      * Create a new controller instance.
