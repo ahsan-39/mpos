@@ -19,7 +19,7 @@
             </div>
         </div>
     </div>
-
+    
     <!-- Main content -->
     <div class="content">
         <div class="container">
