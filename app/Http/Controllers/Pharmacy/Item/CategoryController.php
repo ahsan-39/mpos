@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Pharmacy\Item;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class SubCategoryController extends Controller
+class CategoryController extends Controller
 {
  /**
      * Create a new controller instance.
@@ -22,8 +22,16 @@ class SubCategoryController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+
+    public function categories()
     {
-        $title = 'Manage Items';
-        return view('pharmacy.item.index', compact('title'));
-    }}
+        $title = 'Manage Categories';
+        return view('pharmacy.item.category-index', compact('title'));
+    }
+
+    public function subCategories()
+    {
+        $title = 'Manage Sub Categories';
+        return view('pharmacy.item.sub-category-index', compact('title'));
+    }
+}

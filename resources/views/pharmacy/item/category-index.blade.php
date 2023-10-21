@@ -12,7 +12,8 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item">Home</li>
-                        <li class="breadcrumb-item active">Items</li>
+                        <li class="breadcrumb-item">Items</li>
+                        <li class="breadcrumb-item active">Categories</li>
                     </ol>
                 </div>
             </div>
@@ -24,7 +25,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <livewire.pharmacy.items.sub-category-component/>
+                    <livewire:pharmacy.items.category-component/>
                 </div>
             </div>
         </div>

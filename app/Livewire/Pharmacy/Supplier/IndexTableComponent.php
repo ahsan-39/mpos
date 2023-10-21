@@ -7,7 +7,6 @@ use Livewire\Component;
 use Livewire\WithPagination;
 
 class IndexTableComponent extends Component
-
 {
     use WithPagination;
 
