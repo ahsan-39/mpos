@@ -2,26 +2,26 @@
 
 namespace App\Livewire\Pharmacy\Items;
 
-use App\Models\Pharmacy\ItemStrength;
+use App\Models\Pharmacy\ItemSizeSpecification;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class ItemStrengthComponent extends Component
+class SizeSpecificationComponent extends Component
 {
 
     use WithPagination;
 
     protected $paginationTheme = 'bootstrap';
     public $currentPage;
-    public $lightBoxTitle = 'Add Item Strength';
+    public $lightBoxTitle = 'Add Size Specification';
     public $hideRole = '';
     public $perPage=10;
     public $search=false;
     public $updateMode = false;
-    public $itemStrength_id;
-    public $strengthName=[];
-    public $strength_name;
-    public $searchStrengthName;
+    public $item_size_specification_id;
+    public $sizeSpecificationName=[];
+    public $size_specification_name;
+    public $searchSizeSpecification;
 
 
     /*
@@ -38,7 +38,7 @@ class ItemStrengthComponent extends Component
  
      public function render()
      {
-         return view('livewire.pharmacy.items.item-strength-component', [
+         return view('livewire.pharmacy.items.size-specification-component', [
              'rows' => $this->getRecords()
          ]);
      }
@@ -49,22 +49,22 @@ class ItemStrengthComponent extends Component
 
      public function clearSearch(){
         $this->search = false;
-        $this->searchStrengthName = null;
+        $this->searchSizeSpecification = null;
     }
 
     public function resetInputFields(){
-        $this->lightBoxTitle = 'Add Item Strength Name';
+        $this->lightBoxTitle = 'Add Item Size Specification';
         $this->updateMode = false;
-        $this->strength_name = null;
+        $this->size_specification_name = null;
         $this->resetValidation();
     }
 
     public function getRecords()
     {
         try {
-            return ItemStrength::select('item_strengths.*')
-            ->when($this->searchStrengthName, function($q){
-                $q->where('strength_name', 'LIKE', "%{$this->searchStrengthName}%");
+            return ItemSizeSpecification::select('item_size_specifications.*')
+            ->when($this->searchSizeSpecification, function($q){
+                $q->where('size_specification_name', 'LIKE', "%{$this->searchSizeSpecification}%");
             })
 
             ->orderBy('id','desc')
@@ -82,7 +82,7 @@ class ItemStrengthComponent extends Component
     public function customValidationRules($update=false)
     {
         return [
-            'strength_name' => 'required|min:3',
+            'size_specification_name' => 'required|min:3',
         ];
     }
 
@@ -95,9 +95,9 @@ class ItemStrengthComponent extends Component
     {
         $validatedData = $this->validate($this->customValidationRules(),$this->customValidationMessages());
         try {
-            ItemStrength::create($validatedData);
+            ItemSizeSpecification::create($validatedData);
 
-            $this->dispatch('alert-success','Item Strength created successfully.');
+            $this->dispatch('alert-success','Item Size Specification created successfully.');
 
             $this->resetInputFields();
             $this->dispatch('hideModal');
@@ -116,20 +116,20 @@ class ItemStrengthComponent extends Component
         $this->lightBoxTitle = 'Edit Item Strength';
         $this->resetValidation();
         $this->updateMode = true;
-        $record = ItemStrength::where('id',$id)->first();
-        $this->itemStrength_id = $id;
-        $this->strength_name = $record->strength_name;
+        $record = ItemSizeSpecification::where('id',$id)->first();
+        $this->item_size_specification_id = $id;
+        $this->size_specification_name = $record->size_specification_name;
     }
 
     public function update()
     {
         $validatedData = $this->validate($this->customValidationRules(),$this->customValidationMessages());
 
-        if ($this->itemStrength_id) {
-            $record = ItemStrength::find($this->itemStrength_id);
+        if ($this->item_size_specification_id) {
+            $record = ItemSizeSpecification::find($this->item_size_specification_id);
             $record->update($validatedData);
             $this->updateMode = false;
-            $this->dispatch('alert-success','Item Strength Updated Successfully');
+            $this->dispatch('alert-success','Item Size Specification Updated Successfully');
             $this->resetInputFields();
             $this->dispatch('hideModal');
             $this->setPage($this->currentPage);
@@ -144,7 +144,7 @@ class ItemStrengthComponent extends Component
     public function delete($user)
     {
         try {
-            ItemStrength::find($user)->delete();
+            ItemSizeSpecification::find($user)->delete();
             $this->dispatch('alert-success','Dosage Route Deleted Successfully');
         } catch (\Exception $exception){
             session()->flash('alert-danger',$exception->getMessage());

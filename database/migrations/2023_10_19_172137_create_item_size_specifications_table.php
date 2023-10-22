@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('item_size_specifications', function (Blueprint $table) {
             $table->id();
-            $table->integer('size_specification_code')->nullable();
             $table->string('size_specification_name')->nullable();
             $table->boolean('is_active')->nullable()->default(true);
             $table->timestamps();
