@@ -44,7 +44,7 @@
                     </label>
                     <span>entries</span>
                     <h5 class="border-bottom" style="float:right">
-                        <a class="btn btn-success btn_init_modal btn-sm" href="javascript:void(0)" data-toggle="modal" data-target="#supplierFormModal"><i class="fa fa-plus"></i> Create New Dosage Form</a>
+                        <a class="btn btn-success btn_init_modal btn-sm" href="javascript:void(0)" data-toggle="modal" data-target="#dosageFormModal"><i class="fa fa-plus"></i> Create New Dosage Form</a>
                     </h5>
                 </div>
                 <div class="table-responsive">
@@ -64,14 +64,14 @@
                             <tr>
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$row->dosage_form_name}}</td>
-                                <td>{{$row->dosage_form_type_id}}</td>
+                                <td>{{$row->dosageFormType->dosage_form_type_name}}</td>
 
                                 <td>
                                     <livewire:active-status-component :model="$row" :key="$loop->iteration.time().'status'" />
                                 </td>
                                 <td>{{date('d/m/Y H:i:s', strtotime($row->created_at))}}</td>
                                 <td>
-                                    <button data-toggle="modal" data-target="#supplierFormModal" wire:click="edit({{ $row->id }})" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></button>
+                                    <button data-toggle="modal" data-target="#dosageFormModal" wire:click="edit({{ $row->id }})" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></button>
                                     <a href="javascript:void(0)" wire:click="delete('{{$row->id}}')"  wire:confirm="Are you sure to delete this record ?" class="btn btn-danger btn-xs"><span><i class="fa fa-trash"></i></span></a>
                                 </td>
                             </tr>
@@ -99,7 +99,7 @@
     </div>
 </div>
 <!-- Modal Start-->
-<div wire:ignore.self class="modal fade" id="supplierFormModal" tabindex="-1" role="dialog" aria-labelledby="supplierFormModalTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+<div wire:ignore.self class="modal fade" id="dosageFormModal" tabindex="-1" role="dialog" aria-labelledby="supplierFormModalTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-dialog-centered custom-modal-width" role="document">
         <div class="modal-content">
             <div class="modal-header">

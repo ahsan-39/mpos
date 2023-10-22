@@ -14,11 +14,12 @@ class DosageFormComponent extends Component
 
     protected $paginationTheme = 'bootstrap';
     public $currentPage;
-    public $lightBoxTitle = 'Add Sub Category';
+    public $lightBoxTitle = 'Add Dosage Form';
     public $hideRole = '';
     public $perPage=10;
     public $search=false;
     public $updateMode = false;
+    public $itemDosageForm_id;
     public $dosageFormName=[];
     public $dosageFormTypeName=[];
     public $dosage_form_name, $dosage_form_type_id;
@@ -49,7 +50,7 @@ class DosageFormComponent extends Component
      public function searchFilter(){
         $this->search = true;
     }
-    
+
      public function clearSearch(){
         $this->search = false;
         $this->searchDosageFormName = $this->searchDosageFormTypeId = null;
@@ -114,6 +115,36 @@ class DosageFormComponent extends Component
             }else{
                 $this->dispatch('alert-danger', 'Something went wrong.');
             }
+        }
+    }
+    
+    public function edit($id)
+    {
+        $this->currentPage = $this->getPage();
+        $this->lightBoxTitle = 'Edit Item Dosage Form';
+        $this->resetValidation();
+        $this->updateMode = true;
+        $itemDosageForm = ItemDosageForm::where('id',$id)->first();
+        $this->itemDosageForm_id = $id;
+        $this->dosage_form_name = $itemDosageForm->dosage_form_name;
+        $this->dosage_form_type_id = $itemDosageForm->dosage_form_type_id;
+    }
+
+    public function update()
+    {
+        $validatedData = $this->validate([
+            'dosage_form_name' => 'required|min:3|max:100',
+            'dosage_form_type_id' => 'required',
+        ],[]);
+
+        if ($this->itemDosageForm_id) {
+            $itemDosageForm = ItemDosageForm::find($this->itemDosageForm_id);
+            $itemDosageForm->update($validatedData);
+            $this->updateMode = false;
+            $this->dispatch('alert-success','Item Dosage Form Updated Successfully');
+            $this->resetInputFields();
+            $this->dispatch('hideModal');
+            $this->setPage($this->currentPage);
         }
     }
 

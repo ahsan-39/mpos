@@ -25,7 +25,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <livewire:pharmacy.items.sub-category-component/>
+                    <livewire:pharmacy.items.item-strength-component/>
                 </div>
             </div>
         </div>

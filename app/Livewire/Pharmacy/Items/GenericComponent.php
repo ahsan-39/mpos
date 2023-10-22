@@ -156,7 +156,7 @@ class GenericComponent extends Component
         try {
             ItemGeneric::create($validatedData);
 
-            $this->dispatch('alert-success','Supplier created successfully.');
+            $this->dispatch('alert-success','Item Generic created successfully.');
 
             $this->resetInputFields();
             $this->dispatch('hideModal');

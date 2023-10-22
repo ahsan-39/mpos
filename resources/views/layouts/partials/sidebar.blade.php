@@ -75,12 +75,12 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link {{request()->segment(2)=='dosage-routes'?'active':''}}">
+                <a href="{{route('pharmacy.dosage.routes.list')}}" class="nav-link {{request()->segment(2)=='dosage-routes'?'active':''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Item Dosage Route</p>
                 </a>
               </li><li class="nav-item">
-                <a href="#" class="nav-link {{request()->segment(2)=='strength'?'active':''}}">
+                <a href="{{route('pharmacy.strength.list')}}" class="nav-link {{request()->segment(2)=='strength'?'active':''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Item Strength</p>
                 </a>
