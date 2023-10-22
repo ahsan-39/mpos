@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-6">
                 <label>Item Strength Name</label>
-                <input type="text" placeholder="Item Strength Name" class="form-control" wire:model.defer="searchDosageRouteName">
+                <input type="text" placeholder="Item Strength Name" class="form-control" wire:model.defer="searchStrengthName">
             </div>
             <div class="col-md-3 text-md-end">
                 <label class="d-sm-block invisible d-none">Invisible Text</label>
@@ -52,7 +52,7 @@
                             @forelse($rows as $row)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
-                                <td>{{$row->strength_name }}</td>
+                                <td>{{$row->strength_name}}</td>
                                 <td>
                                     <livewire:active-status-component :model="$row" :key="$loop->iteration.time().'status'" />
                                 </td>
@@ -100,8 +100,8 @@
                     <div class="col-md-6 col-sm-6 mb-3">
                         <label>Item Strength Name <span class="req">*</span></label>
                         <div>
-                            <input type="text" maxlength="100" class="form-control @error('strength_name ') is-invalid @enderror" wire:model.defer="strength_name " placeholder="Item Strength Name" />
-                            @error('strength_name ')
+                            <input type="text" maxlength="100" class="form-control @error('strength_name') is-invalid @enderror" wire:model.defer="strength_name" placeholder="Item Strength Name" />
+                            @error('strength_name')
                             <em id="name-error" class="error invalid-feedback">{{ $message }}</em>
                             @enderror
                         </div>

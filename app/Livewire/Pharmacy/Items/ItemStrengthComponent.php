@@ -63,7 +63,7 @@ class ItemStrengthComponent extends Component
     public function getRecords()
     {
         try {
-            return ItemStrength::select('item_strength_names.*')
+            return ItemStrength::select('item_strengths.*')
             ->when($this->searchStrengthName, function($q){
                 $q->where('strength_name', 'LIKE', "%{$this->searchStrengthName}%");
             })
