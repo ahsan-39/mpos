@@ -40,4 +40,20 @@ class InventoryController extends Controller
         $title = 'Manage Item Generic';
         return view('pharmacy.item.generic-index', compact('title'));
     }
+    
+    public function dosageForms()
+    {
+        $title = 'Manage Item Dosage Forms';
+        return view('pharmacy.item.dosage-form-index', compact('title'));
+    }
+    public function dosageRoutes()
+    {
+        $title = 'Manage Item Dosage Routes';
+        return view('pharmacy.item.dosage-route-index', compact('title'));
+    }
+    public function strength()
+    {
+        $title = 'Manage Item Strength';
+        return view('pharmacy.item.item-strength-index', compact('title'));
+    }
 }
