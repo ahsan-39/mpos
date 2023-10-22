@@ -4,8 +4,10 @@ namespace App\Models\Pharmacy;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Contracts\ActiveStatus;
 
-class ItemStrength extends Model
+
+class ItemStrength extends Model implements ActiveStatus
 {
     use HasFactory;
 
@@ -14,5 +16,18 @@ class ItemStrength extends Model
     public function scopeActive($query)
     {
         return $query->where('is_active',true);
+    }
+
+    public function isActive(): bool
+    {
+        return $this->is_active;
+    }
+
+    public function markActive($active=true): ItemStrength
+    {
+        $this->update([
+            'is_active' => $active
+        ]);
+        return $this;
     }
 }
