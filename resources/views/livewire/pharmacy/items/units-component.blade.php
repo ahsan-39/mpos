@@ -82,6 +82,7 @@
                                 </td>
                             </tr>
                             @endforelse
+                        </tbody>
                     </table>
                 </div>
                 <div class="row" style="margin-top: 20px;">

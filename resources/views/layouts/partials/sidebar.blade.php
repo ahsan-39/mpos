@@ -40,7 +40,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item menu-is-opening menu-open">
+          <li class="nav-item">
             <a href="javascript:void(0)" class="nav-link">
               <i class="nav-icon far fa-plus-square"></i>
               <p>
@@ -48,7 +48,7 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview" style="display: block;">
+            <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{route('pharmacy.category.list')}}" class="nav-link {{request()->segment(2)=='categories'?'active':''}}">
                   <i class="far fa-circle nav-icon"></i>
@@ -102,6 +102,41 @@
                 <a href="{{route('pharmacy.item.definition.list')}}" class="nav-link {{request()->segment(2)=='item-definition'?'active':''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Item Definition</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:void(0)" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Stock
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link {{request()->segment(2)=='stock-receipt'?'active':''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Stock Receipt</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link {{request()->segment(2)=='stock-receipt'?'active':''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Stock Receipt Listing</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('pharmacy.stock.list')}}" class="nav-link {{request()->segment(2)=='stock-listing'?'active':''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Stock Listing</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('pharmacy.stock.summary.list')}}" class="nav-link {{request()->segment(2)=='stock-summary'?'active':''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Stock Summary Report</p>
                 </a>
               </li>
             </ul>

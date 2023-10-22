@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Pharmacy\SupplierController;
 use App\Http\Controllers\Pharmacy\InventoryController;
+use App\Http\Controllers\Pharmacy\StockController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +59,10 @@ Route::group(['prefix' => 'pharmacy', 'middleware' => 'auth', 'as' => 'pharmacy.
     Route::get('item-units', [InventoryController::class,'units'])->name('unit.list');
     Route::get('size-specification', [InventoryController::class,'specification'])->name('size.specification.list');
     Route::get('item-definition', [InventoryController::class,'definition'])->name('item.definition.list');
-    
+
+    //Stock
+    Route::get('stock-listing', [StockController::class,'index'])->name('stock.list');
+    Route::get('stock-summary', [StockController::class,'summary'])->name('stock.summary.list');
+
 });
 

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class InventoryController extends Controller
 {
- /**
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -70,7 +70,7 @@ class InventoryController extends Controller
         $title = 'Manage Size Specification';
         return view('pharmacy.item.size-specification-index', compact('title'));
     }
-    
+
     public function definition()
     {
         $title = 'Manage Item Definition';
