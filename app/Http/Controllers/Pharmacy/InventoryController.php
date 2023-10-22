@@ -56,4 +56,14 @@ class InventoryController extends Controller
         $title = 'Manage Item Strength';
         return view('pharmacy.item.item-strength-index', compact('title'));
     }
+    public function specification()
+    {
+        $title = 'Manage Size Specification';
+        return view('pharmacy.item.size-specification-index', compact('title'));
+    }
+    public function definition()
+    {
+        $title = 'Manage Item Definition';
+        return view('pharmacy.item.item-definition-index', compact('title'));
+    }
 }

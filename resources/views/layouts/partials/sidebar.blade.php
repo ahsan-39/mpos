@@ -48,7 +48,6 @@
               </p>
             </a>
             <ul class="nav nav-treeview" style="display: block;">
-
               <li class="nav-item">
                 <a href="{{route('pharmacy.category.list')}}" class="nav-link {{request()->segment(2)=='categories'?'active':''}}">
                   <i class="far fa-circle nav-icon"></i>
@@ -68,23 +67,41 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('pharmacy.dosage.forms.list')}}" class="nav-link {{request()->segment(2)=='dosage-forms'?'active':''}}">
+                <a href="{{route('pharmacy.dosage.forms.list')}}" class="nav-link {{request()->segment(2)=='item-dosage-forms'?'active':''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Item Dosage Form</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('pharmacy.dosage.routes.list')}}" class="nav-link {{request()->segment(2)=='dosage-routes'?'active':''}}">
+                <a href="{{route('pharmacy.dosage.routes.list')}}" class="nav-link {{request()->segment(2)=='item-dosage-routes'?'active':''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Item Dosage Route</p>
                 </a>
+              </li>
               </li><li class="nav-item">
-                <a href="{{route('pharmacy.strength.list')}}" class="nav-link {{request()->segment(2)=='strength'?'active':''}}">
+                <a href="{{route('pharmacy.strength.list')}}" class="nav-link {{request()->segment(2)=='item-strength'?'active':''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Item Strength</p>
                 </a>
               </li>
-            </ul>
+              </li><li class="nav-item">
+                <a href="{{route('pharmacy.size.specification.list')}}" class="nav-link {{request()->segment(2)=='size-specification'?'active':''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Item Size Specification</p>
+                </a>
+              </li>
+              </li><li class="nav-item">
+                <a href="{{route('pharmacy.strength.list')}}" class="nav-link {{request()->segment(2)=='item-strength'?'active':''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Item Strength</p>
+                </a>
+              </li>
+              </li><li class="nav-item">
+                <a href="{{route('pharmacy.item.definition.list')}}" class="nav-link {{request()->segment(2)=='item-definition'?'active':''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Item Definition</p>
+                </a>
+              </li>
           </li>
           <li class="nav-item">
             <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
