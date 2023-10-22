@@ -27,6 +27,22 @@
           </ul>
         </li>
         @endif
+        {{-- @if(in_array(auth()->user()->role_id,[1,2]))
+        <li class="nav-item {{request()->segment(2)=='suppliers'?'active':''}}">
+          <a href="{{route('pharmacy.suppliers.list')}}" class="nav-link">Suppliers </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a id="dropdownSubMenu2" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Inventory</a>
+          <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
+            <li><a href="{{route('pharmacy.category.list')}}" class="dropdown-item {{request()->segment(2)=='categories'?'active':''}}">Item Category </a></li>
+            <li><a href="{{route('pharmacy.sub.category.list')}}" class="dropdown-item {{request()->segment(2)=='sub-category'?'active':''}}">Item Sub Category </a></li>
+            <li><a href="{{route('pharmacy.generic.list')}}" class="dropdown-item {{request()->segment(2)=='generic'?'active':''}}">Item Generic </a></li>
+            <li><a href="{{route('pharmacy.dosage.forms.list')}}" class="dropdown-item {{request()->segment(2)=='item-dosage-forms'?'active':''}}">Item Dosage Form </a></li>
+            <li><a href="#" class="dropdown-item">Item Dosage Route </a></li>
+            <li><a href="#" class="dropdown-item">Item Strength </a></li>
+          </ul>
+        </li>
+        @endif --}}
       </ul>
 
       <!-- Right navbar links -->

@@ -15,4 +15,9 @@ class ItemCategoryGroup extends Model
     {
         return $query->where('is_active',true);
     }
+
+    public function categoryGroup()
+    {
+        return $this->belongsTo(ItemCategoryGroup::class,'category_group_id','id');
+    }
 }

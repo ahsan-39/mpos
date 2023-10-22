@@ -55,7 +55,7 @@ Route::group(['prefix' => 'pharmacy', 'middleware' => 'auth', 'as' => 'pharmacy.
     Route::get('item-dosage-forms', [InventoryController::class,'dosageForms'])->name('dosage.forms.list');
     Route::get('item-dosage-routes', [InventoryController::class,'dosageRoutes'])->name('dosage.routes.list');
     Route::get('item-strength', [InventoryController::class,'strength'])->name('strength.list');
+    Route::get('item-units', [InventoryController::class,'units'])->name('unit.list');
 
-    
 });
 

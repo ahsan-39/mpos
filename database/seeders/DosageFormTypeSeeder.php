@@ -30,6 +30,6 @@ class DosageFormTypeSeeder extends Seeder
                 'updated_at' => date('Y-m-d H:i:s')
             ]
         ];
-        ItemDosageFormType::insert($data);   
+        ItemDosageFormType::insert($data);
     }
 }

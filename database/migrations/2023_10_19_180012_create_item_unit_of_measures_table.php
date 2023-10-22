@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('item_unit_of_measures', function (Blueprint $table) {
             $table->id();
-            $table->integer('uom_code')->nullable();
             $table->string('uom_name')->nullable();
             $table->integer('category_group_id')->nullable();
             $table->integer('child_uom_id')->nullable();

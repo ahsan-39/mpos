@@ -30,6 +30,8 @@
                 </p>
             </a>
           </li>
+          @endif
+          @if(in_array(auth()->user()->role_id,[1,2]))
           <li class="nav-item">
             <a href="{{route('pharmacy.suppliers.list')}}" class="nav-link {{request()->segment(2)=='suppliers'?'active':''}}">
               <i class="nav-icon fa fa-users"></i>
@@ -38,7 +40,6 @@
               </p>
             </a>
           </li>
-          @endif
           <li class="nav-item menu-is-opening menu-open">
             <a href="javascript:void(0)" class="nav-link">
               <i class="nav-icon far fa-plus-square"></i>
@@ -84,8 +85,16 @@
                   <p>Item Strength</p>
                 </a>
               </li>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('pharmacy.unit.list')}}" class="nav-link {{request()->segment(2)=='item-units'?'active':''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Item Units</p>
+                </a>
+              </li>
             </ul>
           </li>
+          @endif
           <li class="nav-item">
             <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
               <i class="nav-icon fas fa-sign-out-alt"></i>
