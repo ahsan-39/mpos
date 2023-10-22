@@ -61,6 +61,23 @@
                   <p>Item Sub Category</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('pharmacy.dosage.forms.list')}}" class="nav-link {{request()->segment(2)=='dosage-forms'?'active':''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Item Dosage Form</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link {{request()->segment(2)=='dosage-routes'?'active':''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Item Dosage Route</p>
+                </a>
+              </li><li class="nav-item">
+                <a href="#" class="nav-link {{request()->segment(2)=='strength'?'active':''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Item Strength</p>
+                </a>
+              </li>
             </ul>
           </li>
           <li class="nav-item">
