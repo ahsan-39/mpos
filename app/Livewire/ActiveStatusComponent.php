@@ -29,12 +29,12 @@ class ActiveStatusComponent extends Component
     public function markActive()
     {
         $this->model->markActive(true);
-        $this->dispatch('alert-success','Account status is updated.');
+        $this->dispatch('alert-success','Status is updated.');
     }
 
     public function markInActive()
     {
         $this->model->markActive(false);
-        $this->dispatch('alert-success','Account status is updated.');
+        $this->dispatch('alert-success','Status is updated.');
     }
 }

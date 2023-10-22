@@ -41,6 +41,14 @@ class ItemCategorySeeder extends Seeder
             [
                 'id' => 7, 'category_name' => 'Linen', 'category_group_id' => 2,
                 'is_active' => true, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'id' => 8, 'category_name' => 'Gasses', 'category_group_id' => 2,
+                'is_active' => true, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'id' => 9, 'category_name' => 'Instrument & Equipment', 'category_group_id' => 2,
+                'is_active' => true, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')
             ]
         ];
         ItemCategory::insert($data);

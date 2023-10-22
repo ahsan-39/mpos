@@ -44,9 +44,6 @@
                         </select>
                     </label>
                     <span>entries</span>
-                    <h5 class="border-bottom" style="float:right">
-                        <a class="btn btn-success btn_init_modal btn-sm" href="javascript:void(0)" data-toggle="modal" data-target="#supplierFormModal"><i class="fa fa-plus"></i> Create New Supplier</a>
-                    </h5>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-bordered dataTable dtr-inline">

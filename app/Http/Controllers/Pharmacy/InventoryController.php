@@ -35,6 +35,12 @@ class InventoryController extends Controller
         return view('pharmacy.item.sub-category-index', compact('title'));
     }
 
+    public function generic()
+    {
+        $title = 'Manage Item Generic';
+        return view('pharmacy.item.generic-index', compact('title'));
+    }
+    
     public function dosageForms()
     {
         $title = 'Manage Item Dosage Forms';
